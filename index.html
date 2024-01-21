@@ -111,7 +111,7 @@
       if (command === 'sudo su dylemat') {
         simulateLoginAnimation()
           .then(() => {
-            // Symulacja ładowania filmiku
+            
             outputElement.innerHTML += '\nExecuting command: ls';
             setTimeout(() => {
               outputElement.innerHTML += '\nBypassing firewall...';
@@ -124,7 +124,7 @@
               setTimeout(() => {
                 const currentTime = new Date();
                 const hours = currentTime.getHours();
-                window.location.href = '1euFmkI.png'; // Fikcyjna lokalizacja
+                window.location.href = '1euFmkI.png'; 
               }, 3000);
             }, 3000);
           })
@@ -136,7 +136,7 @@
         outputElement.innerHTML += `\nNieznane polecenie: ${command}`;
       }
 
-      // Czyszczenie pola wejściowego
+      
       inputElement.value = '';
     }
 
@@ -145,7 +145,7 @@
       outputElement.innerHTML += '\nRozpoczynanie logowania...';
 
       return new Promise((resolve, reject) => {
-        // Symulacja animacji logowania (3 sekundy)
+        
         setTimeout(() => {
           outputElement.innerHTML += '\nLogowanie zakończone pomyślnie.';
           resolve();
