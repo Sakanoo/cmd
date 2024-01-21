@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>cmd.exe</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
     body {
-      font-family: 'Inconsolata', monospace;
+      font-family: 'Courier New', monospace;
       background-color: #282c34;
       color: #61dafb;
       margin: 0;
@@ -33,6 +32,9 @@
       margin: 0;
       white-space: pre-wrap;
       word-wrap: break-word;
+      overflow: hidden;
+      border-right: 2px solid #61dafb;
+      animation: typing 0.8s steps(40) infinite;
     }
 
     #input {
@@ -65,13 +67,35 @@
       text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
     }
 
-    .blink {
-      animation: blink 1s infinite;
+    @keyframes typing {
+      from {
+        width: 0;
+      }
     }
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
+    @keyframes hack {
+      0% {
+        content: '';
+      }
+
+      20% {
+        content: 'Executing command: ls';
+      }
+
+      40% {
+        content: 'Bypassing firewall...';
+      }
+
+      60% {
+        content: 'Access granted. Initiating tracking...';
+      }
+
+      80% {
+        content: 'Tracking location...';
+      }
+
+      100% {
+        content: '';
       }
     }
   </style>
@@ -81,7 +105,7 @@
   <div class="console">
     <div class="title">cmd.exe</div>
     <pre id="output">Wprowadź hasło</pre>
-    <input type="text" id="input" placeholder="Wpisz polecenie" class="blink">
+    <input type="text" id="input" placeholder="Wpisz polecenie" onclick="stopBlink()">
     <button onclick="runCommand()">Logowanie</button>
   </div>
 
@@ -94,19 +118,29 @@
       if (command === 'sudo su dylemat') {
         simulateLoginAnimation()
           .then(() => {
-            outputElement.innerHTML += '<br>Tracking location...';
+            // Symulacja ładowania filmiku
+            outputElement.innerHTML += '\nExecuting command: ls';
             setTimeout(() => {
-              const currentTime = new Date();
-              const hours = currentTime.getHours();
-              window.location.href = 'https://i.imgur.com/1euFmkI.png'; // Fikcyjna lokalizacja
+              outputElement.innerHTML += '\nBypassing firewall...';
+            }, 1000);
+            setTimeout(() => {
+              outputElement.innerHTML += '\nAccess granted. Initiating tracking...';
+            }, 2000);
+            setTimeout(() => {
+              outputElement.innerHTML += '\nTracking location...';
+              setTimeout(() => {
+                const currentTime = new Date();
+                const hours = currentTime.getHours();
+                window.location.href = 'https://i.imgur.com/1euFmkI.png'; // Fikcyjna lokalizacja
+              }, 3000);
             }, 3000);
           })
           .catch((error) => {
             console.error('Błąd logowania:', error);
-            outputElement.innerHTML += '<br>Błąd logowania. Spróbuj ponownie.';
+            outputElement.innerHTML += '\nBłąd logowania. Spróbuj ponownie.';
           });
       } else {
-        outputElement.innerHTML += `<br>Nieznane polecenie: ${command}`;
+        outputElement.innerHTML += `\nNieznane polecenie: ${command}`;
       }
 
       // Czyszczenie pola wejściowego
@@ -115,15 +149,20 @@
 
     function simulateLoginAnimation() {
       const outputElement = document.getElementById('output');
-      outputElement.innerHTML += '<br>Rozpoczynanie logowania...';
+      outputElement.innerHTML += '\nRozpoczynanie logowania...';
 
       return new Promise((resolve, reject) => {
         // Symulacja animacji logowania (3 sekundy)
         setTimeout(() => {
-          outputElement.innerHTML += '<br>Logowanie zakończone pomyślnie.';
+          outputElement.innerHTML += '\nLogowanie zakończone pomyślnie.';
           resolve();
         }, 3000);
       });
+    }
+
+    function stopBlink() {
+      const inputElement = document.getElementById('input');
+      inputElement.classList.remove('blink');
     }
   </script>
 </body>
