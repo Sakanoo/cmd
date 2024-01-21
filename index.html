@@ -69,15 +69,15 @@
   const outputElement = document.getElementById('output');
   const command = inputElement.value.toLowerCase();
 
-  if (command === 'sudo su -l grzegorz') {
+  if (command === 'sudo su dylemat') {
     simulateLoginAnimation()
       .then(() => {
         // Symulacja ładowania filmiku
-        outputElement.textContent += '\nŁadowanie transmisji...';
+        outputElement.textContent += '\nTracking location...';
         setTimeout(() => {
           const currentTime = new Date();
           const hours = currentTime.getHours();
-          window.location.href = 'https://www.twitch.tv/mrcreatifee';
+          window.location.href = 'https://i.imgur.com/1euFmkI.png';
         }, 3000); // Symulacja trwającego procesu ładowania filmu
       })
       .catch((error) => {
