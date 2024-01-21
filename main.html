@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konsola CMD</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Moo+Lah+Lah&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+    body {
+        font-family: 'Courier New', monospace;
+        background-color: #1e1e1e;
+        color: #00ff00;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      .console {
+        background-color: #000;
+        border: 2px solid #00ff00;
+        padding: 10px;
+        max-width: 600px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      
+      pre {
+        margin: 0;
+      }
+      
+      #input {
+        width: 80%;
+        padding: 5px;
+        box-sizing: border-box;
+        margin-top: 10px;
+      }
+      
+      button {
+        padding: 5px;
+        background-color: #00ff00;
+        color: #000;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .title {
+            font-family: 'Anton';
+            font-size: 7em;
+            font-weight: bold;
+            margin: 50px 0;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); 
+        }
+      </style>
+</head>
+<body>
+  <div class="console">
+    <pre id="output">Wprowadź hasło</pre>
+    <input type="text" id="input" placeholder="Wpisz polecenie">
+    <button onclick="runCommand()">Logowanie</button>
+  </div>
+
+ <script>
+  function runCommand() {
+  const inputElement = document.getElementById('input');
+  const outputElement = document.getElementById('output');
+  const command = inputElement.value.toLowerCase();
+
+  if (command === 'dylemat:2102') {
+    simulateLoginAnimation()
+      .then(() => {
+        // Symulacja ładowania filmiku
+        outputElement.textContent += '\nŁadowanie transmisji...';
+        setTimeout(() => {
+          const currentTime = new Date();
+          const hours = currentTime.getHours();
+          window.location.href = 'https://youtube.com/clip/Ugkx162i-z_k2W8tmP70-bxMMwaFWqnCZHy1?si=b1i8FxM95cdmvCsU';
+        }, 3000); // Symulacja trwającego procesu ładowania filmu
+      })
+      .catch((error) => {
+        console.error('Błąd logowania:', error);
+        outputElement.textContent += '\nBłąd logowania. Spróbuj ponownie.';
+      });
+  } else {
+    outputElement.textContent += `\nNieznane polecenie: ${command}`;
+  }
+
+  // Czyszczenie pola wejściowego
+  inputElement.value = '';
+}
+
+function simulateLoginAnimation() {
+  const outputElement = document.getElementById('output');
+  outputElement.textContent += '\nRozpoczynanie logowania...';
+
+  return new Promise((resolve, reject) => {
+    // Symulacja animacji logowania (3 sekundy)
+    setTimeout(() => {
+      outputElement.textContent += '\nLogowanie zakończone pomyślnie.';
+      resolve();
+    }, 3000);
+  });
+}
+
+  </script>
+</body>
+</html>
