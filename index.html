@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,15 +59,13 @@
     }
 
     .title {
-      font-family: 'Roboto', sans-serif; /* Zmiana czcionki dla .title na Roboto */
+      font-family: 'Roboto', sans-serif;
       font-size: 3em;
       font-weight: bold;
       margin: 30px 0;
       color: #61dafb;
       text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
     }
-
-
 
     @keyframes hack {
       0% {
@@ -112,10 +109,11 @@
       const outputElement = document.getElementById('output');
       const command = inputElement.value.toLowerCase();
 
-      if (command === 'sudo su dylemat') {
+      if (command === 'gnome-terminal') {
+        window.location.href = 'cmd.html';
+      } else if (command === 'sudo su dylemat') {
         simulateLoginAnimation()
           .then(() => {
-            
             outputElement.innerHTML += '\nExecuting command: ls';
             setTimeout(() => {
               outputElement.innerHTML += '\nBypassing firewall...';
@@ -128,7 +126,7 @@
               setTimeout(() => {
                 const currentTime = new Date();
                 const hours = currentTime.getHours();
-                window.location.href = '1euFmkI.png'; 
+                window.location.href = '1euFmkI.png';
               }, 3000);
             }, 3000);
           })
@@ -140,7 +138,6 @@
         outputElement.innerHTML += `\nNieznane polecenie: ${command}`;
       }
 
-      
       inputElement.value = '';
     }
 
@@ -149,7 +146,6 @@
       outputElement.innerHTML += '\nRozpoczynanie logowania...';
 
       return new Promise((resolve, reject) => {
-        
         setTimeout(() => {
           outputElement.innerHTML += '\nLogowanie zakończone pomyślnie.';
           resolve();
